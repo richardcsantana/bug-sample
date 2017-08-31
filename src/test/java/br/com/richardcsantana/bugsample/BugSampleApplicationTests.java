@@ -23,7 +23,14 @@ public class BugSampleApplicationTests {
     private MockMvc mvc;
 
     @Test
-    public void sucessCase() throws Exception {
+    public void sucess8DigitsCase() throws Exception {
+        String content = "{\"name\":\"teste\",\"telephone\":\"9999-9999\"}";
+        this.mvc.perform(post("/contact").contentType(MediaType.APPLICATION_JSON_UTF8_VALUE).content(content).accept(MediaType.APPLICATION_JSON_UTF8_VALUE))
+                .andExpect(status().isCreated());
+    }
+
+    @Test
+    public void sucess9DigitsCase() throws Exception {
         String content = "{\"name\":\"teste\",\"telephone\":\"99999-9999\"}";
         this.mvc.perform(post("/contact").contentType(MediaType.APPLICATION_JSON_UTF8_VALUE).content(content).accept(MediaType.APPLICATION_JSON_UTF8_VALUE))
                 .andExpect(status().isCreated());

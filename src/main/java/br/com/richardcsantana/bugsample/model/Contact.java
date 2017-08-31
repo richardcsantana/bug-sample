@@ -18,7 +18,7 @@ public class Contact {
     @Size(min = 3,max = 15)
     private String name;
     @NotNull
-    @Pattern(regexp = "\\d{5}-\\d{4}")
+    @Pattern(regexp = "\\d{4,5}-\\d{4}")
     private String telephone;
 
 }
