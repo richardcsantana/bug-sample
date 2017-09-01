@@ -19,6 +19,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 public class BugSampleApplicationTests {
+
     @Autowired
     private MockMvc mvc;
 
@@ -34,6 +35,13 @@ public class BugSampleApplicationTests {
         String content = "{\"name\":\"teste\",\"telephone\":\"99999-9999\"}";
         this.mvc.perform(post("/contact").contentType(MediaType.APPLICATION_JSON_UTF8_VALUE).content(content).accept(MediaType.APPLICATION_JSON_UTF8_VALUE))
                 .andExpect(status().isCreated());
+    }
+
+    @Test
+    public void nameNumericValidation() throws Exception {
+        String content = "{\"name\":\"teste1\",\"telephone\":\"9999-9999\"}";
+        this.mvc.perform(post("/contact").contentType(MediaType.APPLICATION_JSON_UTF8_VALUE).content(content).accept(MediaType.APPLICATION_JSON_UTF8_VALUE))
+                .andExpect(status().isBadRequest());
     }
 
     @Test

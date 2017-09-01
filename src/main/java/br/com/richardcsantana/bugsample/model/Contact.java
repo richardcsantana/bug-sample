@@ -16,6 +16,7 @@ public class Contact {
 
     @NotNull
     @Size(min = 3,max = 15)
+    @Pattern(regexp = "^[a-zA-Z]+$")
     private String name;
     @NotNull
     @Pattern(regexp = "\\d{4,5}-\\d{4}")
